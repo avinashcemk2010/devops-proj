@@ -6,6 +6,18 @@ pipeline {
     }
 
     stages {
+
+        stage('Debugging') {
+            steps {
+                script {
+                    sh "whoami"  // Check which user Jenkins is running as
+                    sh "echo %PATH%"  // Check environment variables
+                    sh "git --version"  // Verify Git is installed
+                    sh "docker --version"  // Verify Docker is installed
+                }
+            }
+        }
+
         stage('Checkout Code') {
             steps {
                 script {
